@@ -1,0 +1,10 @@
+.cproject
+.project
+build/
+firmware/
+.settings/
+.DS_Store
+include/user_config.local.h
+tools/webpages.espfs
+tools/mkespfsimage/*.o
+tools/mkespfsimage/mkespfsimage
