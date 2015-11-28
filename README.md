@@ -2,6 +2,8 @@
 ==========
 Creating 2 firmware using 2 linker script is not convenient at all, sdk bootloader and rboot only use a maximum of 512KB flash, because one half must for 2nd firmware, esp-bootloader resolve this, it will automatically copy the new firmware and overwrite the old location when checking new firmware is valid. Of course, you will get 1Mbytes Flash and just create one single application firmware with only one linker script.
 This example use 4Mbytes flash, and this is addressed layout:
+
+```
 {	
 	[Bootloader] 		0x0000 - 0x0FFF: 4KB
 	[Boot-config]		0x1000 - 0x1FFF: 4KB
@@ -10,6 +12,7 @@ This example use 4Mbytes flash, and this is addressed layout:
 [userSpace]			0x100000 - 0x1FFFFF => second 1 MBytes space:  user config location
 [newAppSpace]		0x200000 - 0x2FFFFF => next 1 MBytes space: for new firmawre store
 [BackupSpace]		0x300000 - 0x3FFFFF => Last 1 MByte space : backup firmware for ota failed
+```
 
 - App firmware linker script from Espressif, and change irom0_o_seg to`org=0x40202010`:
 ```
