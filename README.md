@@ -26,7 +26,7 @@ MEMORY
 ```
 **STEP2:** use esp_conn to download firmware generate by sdk for bootloader 1.4, and save to address 0x200000
 
-**STEP3:** Save espboot_cfg too address 0x1000, new_rom_addr = 0x200000, and restart, bootloader will loader new rom
+**STEP3:** Save espboot_cfg to address 0x1000, new_rom_addr = 0x200000, and restart, bootloader will loader new rom
 ```
 #define BOOT_CONFIG_SECTOR 				1
 #define BOOT_CONFIG_MAGIC 				0xF01A
