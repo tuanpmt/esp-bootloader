@@ -14,7 +14,7 @@ This example use 4Mbytes flash, and this is addressed layout:
 [BackupSpace]		0x300000 - 0x3FFFFF => Last 1 MByte space : backup firmware for ota failed
 ```
 
-- App firmware linker script from Espressif, and change irom0_o_seg to`org=0x40202010`:
+**STEP1:** App firmware linker script from Espressif, and change irom0_o_seg to`org=0x40202010`:
 ```
 MEMORY
 {
@@ -24,8 +24,8 @@ MEMORY
   irom0_0_seg :                         org = 0x40202010, len = 0x6A000
 }
 ```
-- use esp_conn to download firmware generate by sdk for bootloader 1.4, and save to address 0x200000
-- Save espboot_cfg too address 0x1000, new_rom_addr = 0x200000, and restart, bootloader will loader new rom
+**STEP2:** use esp_conn to download firmware generate by sdk for bootloader 1.4, and save to address 0x200000
+**STEP3:** Save espboot_cfg too address 0x1000, new_rom_addr = 0x200000, and restart, bootloader will loader new rom
 ```
 #define BOOT_CONFIG_SECTOR 				1
 #define BOOT_CONFIG_MAGIC 				0xF01A
@@ -76,7 +76,7 @@ load_boot_cfg(espboot_cfg *cfg)
 ```
 
  
-*Based on (thanks):* [https://github.com/raburton/esp8266/tree/master/rboot](https://github.com/raburton/esp8266/tree/master/rboot)
+*Based on (and thanks):* [https://github.com/raburton/esp8266/tree/master/rboot](https://github.com/raburton/esp8266/tree/master/rboot)
 
 
 **LICENSE - "GNU GENERAL PUBLIC LICENSE"**
