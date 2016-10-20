@@ -16,7 +16,7 @@ extern void ets_printf(char*, ...);
 extern void ets_delay_us(int);
 extern void ets_memset(void*, uint8, uint32);
 extern void ets_memcpy(void*, const void*, uint32);
-
+extern uart_div_modify(int, int);
 typedef void loader(void);
 typedef void ramloader(uint32);
 #ifndef INFO

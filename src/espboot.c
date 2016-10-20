@@ -196,7 +196,7 @@ void load_boot_cfg(espboot_cfg *cfg)
 		cfg->magic = BOOT_CONFIG_MAGIC;
 		cfg->app_rom_addr = DEFAULT_APPROM_ADDR;
 		cfg->backup_rom_addr = DEFAULT_BACKUPROM_ADDR;
-		cfg->new_rom_addr = 0x200000;
+		cfg->new_rom_addr = 0x000000; //not loader
 		save_boot_cfg(cfg);
 	}
 	INFO(" boot settings\r\n");
@@ -235,6 +235,9 @@ void call_user_start()
 {
 
 	uint32 romaddr = 0, total_size = 0, boot_try = 3;
+	
+	uart_div_modify(0, (80*1000000) / (115200));
+	ets_delay_us(500000);
 	INFO("ESPBOOT - New style Bootloader for ESP8266\r\n"
 			 "Version: v0.1 - Release: 2015-Nov-01\r\n"
 			 "Author: Tuan PM\r\n");
@@ -247,7 +250,7 @@ void call_user_start()
 		{
 			boot_cfg.new_rom_addr = 0;
 			save_boot_cfg(&boot_cfg);
-			INFO("ESPBOOT: everyting is ok, goto new app\r\n");
+			INFO("ESPBOOT: everything is ok, goto new app\r\n");
 			boot_app(romaddr);
 		}
 
